@@ -80,8 +80,4 @@ class WorldTime {
     time='Zle spojenie!!!';
     }
   }
-
-
-
-
 }

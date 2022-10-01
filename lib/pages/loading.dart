@@ -88,9 +88,10 @@ class _LoadingState extends State<Loading> {
   void setupWorldTime() async{
     WorldTime instance=WorldTime(location: 'Berlin', flag: 'germany.png', url: 'Europe/Amsterdam');
     await instance.getTime();
+    // print(instance);
 
     await Future.delayed(
-              const Duration(seconds: 2),()
+              const Duration(seconds: 1),()
               {
             setState(() {
               text1=    "Environmentálny";
@@ -107,10 +108,17 @@ class _LoadingState extends State<Loading> {
                           });
           });
     await Future.delayed(
-              const Duration(seconds: 2),()
+              const Duration(seconds: 1),()
           {
           });
-    Navigator.pushReplacementNamed(context, '/home');
+    Navigator.pushReplacementNamed(context, '/worldtimepage',
+        arguments: {
+          'flag':instance.flag,
+          'location':instance.location,
+          'time':instance.time,
+          'url':instance.url
+        }
+        );
 
     // print (instance.time);
     // setState(() {

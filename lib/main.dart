@@ -1,9 +1,10 @@
 // import 'dart:js';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+// import 'package:flutter/services.dart';
 
 import 'pages/home.dart';
+import 'pages/worldtime.dart';
 import 'pages/loading.dart';
 import 'pages/novinky.dart';
 import 'pages/vyzvy.dart';
@@ -27,7 +28,7 @@ void main() {
     routes: {
       '/':(context) => Loading(),
       '/home': (context) => Home(),
-      '/worldtime': (context) => Home(),
+      '/worldtimepage': (context) => WorldTimePage(),
       '/novinky': (context) => Novinky(),
       '/vyzvy': (context) => Vyzvy(),
       '/loading': (context) => Loading(),
