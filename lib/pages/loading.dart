@@ -99,7 +99,7 @@ class _LoadingState extends State<Loading> {
             );
 
     await Future.delayed(
-              const Duration(seconds: 2),()
+              const Duration(seconds: 1),()
           {
             setState(() {
 
