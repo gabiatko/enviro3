@@ -27,6 +27,7 @@ void main() {
     routes: {
       '/':(context) => Loading(),
       '/home': (context) => Home(),
+      '/worldtime': (context) => Home(),
       '/novinky': (context) => Novinky(),
       '/vyzvy': (context) => Vyzvy(),
       '/loading': (context) => Loading(),

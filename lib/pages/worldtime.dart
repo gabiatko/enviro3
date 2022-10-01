@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:enviro/widgets/MyAppBar.dart';
 import 'package:enviro/widgets/MyBottomBar.dart';
 
-class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+class WorldTimePage extends StatefulWidget {
+  const WorldTimePage({Key? key}) : super(key: key);
 
   @override
-  State<Home> createState() => _HomeState();
+  State<WorldTimePage> createState() => _WorldTimePageState();
 }
 
-class _HomeState extends State<Home> {
+class _WorldTimePageState extends State<WorldTimePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +40,7 @@ class _HomeState extends State<Home> {
                   backgroundColor:Colors.cyanAccent,
                   foregroundColor:Colors.blue,
                   shadowColor: Colors.amber,
-                    elevation:3,
+                  elevation:3,
                 ),
                 label: Text('Location'),
               ),
