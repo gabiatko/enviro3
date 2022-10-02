@@ -80,4 +80,16 @@ class WorldTime {
     time='Zle spojenie!!!';
     }
   }
+
+}
+class ScArguments {
+  String location; // location for UI
+  String time; // time for that location
+  String flag;
+
+
+  ScArguments({required this.location, required this.time, required this.flag});
+
+
+  // ScreenArguments(this.title, this.message);
 }

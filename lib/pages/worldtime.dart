@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:enviro/widgets/MyAppBar.dart';
 import 'package:enviro/widgets/MyBottomBar.dart';
-// import 'package:enviro/services/getjson.dart';
+import 'package:enviro/services/getjson.dart';
 
 class WorldTimePage extends StatefulWidget {
   const WorldTimePage({Key? key}) : super(key: key);
@@ -16,9 +16,9 @@ class _WorldTimePageState extends State<WorldTimePage> {
   @override
   Widget build(BuildContext context) {
 
-    Map args=ModalRoute.of(context)!.settings.arguments as Map; //toto prijima arguments
+    ScArguments args=ModalRoute.of(context)!.settings.arguments as ScArguments; //toto prijima arguments
 
-    print(args['time']);
+    print('String time: '+args.time.toString());
 
 
     return Scaffold(

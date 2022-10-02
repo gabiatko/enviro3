@@ -111,14 +111,20 @@ class _LoadingState extends State<Loading> {
               const Duration(seconds: 1),()
           {
           });
+    // Navigator.pushReplacementNamed(context, '/worldtimepage',
+    //     arguments: {
+    //       'flag':instance.flag,
+    //       'location':instance.location,
+    //       'time':instance.time,
+    //       'url':instance.url
+    //     });
     Navigator.pushReplacementNamed(context, '/worldtimepage',
-        arguments: {
-          'flag':instance.flag,
-          'location':instance.location,
-          'time':instance.time,
-          'url':instance.url
-        }
-        );
+        arguments: ScArguments(
+            location: instance.location,
+            time: instance.time,
+            flag: instance.flag
+        )
+    );
 
     // print (instance.time);
     // setState(() {
