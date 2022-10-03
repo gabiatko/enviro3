@@ -1,6 +1,8 @@
 import 'package:http/http.dart';
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
+import 'package:intl/intl.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 
 class GetJson{
@@ -49,9 +51,16 @@ class WorldTime {
   String flag;
   String url;
 
+
   WorldTime({required this.location, required this.flag, required this.url});
 
   Future<void> getTime() async {
+    DateFormat dateFormat;
+    DateFormat timeFormat;
+    // initializeDateFormatting().then((_) => runMyCode());
+    initializeDateFormatting();
+    dateFormat = new DateFormat.yMMMMd('cs');
+    timeFormat = new DateFormat.Hms('cs');
     try {
       // var url = Uri.http('worldtimeapi.org', 'api/timezone/' + this.url);
       var urli = Uri.http('worldtimeapi.org', 'api/timezone/' + url);
@@ -70,7 +79,8 @@ class WorldTime {
       DateTime teraz = DateTime.parse(datetime);
       teraz = teraz.add(Duration(hours: int.parse(offset)));
       // print(teraz);
-      time = teraz.toString();
+      time = DateFormat.jm().format(teraz).toString();
+
       // } else {
       //   print('Request failed with status: ${response.statusCode}.');
       // }

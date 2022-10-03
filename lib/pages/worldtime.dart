@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:enviro/widgets/MyAppBar.dart';
 import 'package:enviro/widgets/MyBottomBar.dart';
-import 'package:enviro/services/getjson.dart';
+// import 'package:enviro/services/getjson.dart';
 
 class WorldTimePage extends StatefulWidget {
   const WorldTimePage({Key? key}) : super(key: key);
@@ -12,14 +13,22 @@ class WorldTimePage extends StatefulWidget {
 
 class _WorldTimePageState extends State<WorldTimePage> {
   // Map data={};
+  String cas='';
 
   @override
   Widget build(BuildContext context) {
 
-    ScArguments args=ModalRoute.of(context)!.settings.arguments as ScArguments; //toto prijima arguments
-
-    print('String time: '+args.time.toString());
-
+    // ScArguments args=ModalRoute.of(context)!.settings.arguments as ScArguments; //toto prijima arguments
+    // Map scmap=args as Map;
+    // print('String time: '+args.time.toString());
+    // print('Args: '+args.toString());
+    // print('SCMap: '+scmap.toString());
+    Map args2=ModalRoute.of(context)!.settings.arguments as Map; //toto prijima arguments
+    print('33333');
+    print(args2);
+    print('4444');
+    // cas=args.time.toString();
+    // cas=args2.time.toString();
 
     return Scaffold(
       appBar: const MyappBar(
@@ -35,8 +44,8 @@ class _WorldTimePageState extends State<WorldTimePage> {
 
             children: [
               Text('WORLDTIME PAGE'),
-              Text('nejaky'),
-              Text('nejaky2'),
+              // Text('nejaky'),
+              // Text('nejaky2'),
               ElevatedButton.icon(   // <-- ElevatedButton
                 onPressed: () {
                   Navigator.pushNamed(context, '/loading');
@@ -53,6 +62,29 @@ class _WorldTimePageState extends State<WorldTimePage> {
                 ),
                 label: Text('Loading page'),
               ),
+              SizedBox(height:20.0),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    args2['location'],
+                    style: TextStyle(
+                      fontSize: 32.0,
+                      fontWeight: FontWeight.w900,
+                      letterSpacing: 2.0,
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 20.0),
+              Text(
+                args2['time'],
+                style: TextStyle(
+                  fontSize: 20.0,
+                  letterSpacing: 2.0,
+                ),
+              ),
+              SizedBox(height: 50.0),
               TextButton.icon(     // <-- TextButton
                 onPressed: () {},
                 icon: const Icon(

@@ -89,7 +89,14 @@ class _LoadingState extends State<Loading> {
     WorldTime instance=WorldTime(location: 'Berlin', flag: 'germany.png', url: 'Europe/Amsterdam');
     await instance.getTime();
     // print(instance);
-
+    Map<String, dynamic> mapsc = {
+      'flag':instance.flag,
+      'location':instance.location,
+      'time':instance.time,
+    };
+    print('1111');
+    print(mapsc);
+    print('2222');
     await Future.delayed(
               const Duration(seconds: 1),()
               {
@@ -111,20 +118,18 @@ class _LoadingState extends State<Loading> {
               const Duration(seconds: 1),()
           {
           });
-    // Navigator.pushReplacementNamed(context, '/worldtimepage',
-    //     arguments: {
-    //       'flag':instance.flag,
-    //       'location':instance.location,
-    //       'time':instance.time,
-    //       'url':instance.url
-    //     });
+
     Navigator.pushReplacementNamed(context, '/worldtimepage',
-        arguments: ScArguments(
-            location: instance.location,
-            time: instance.time,
-            flag: instance.flag
-        )
+        arguments: mapsc
     );
+
+    // Navigator.pushReplacementNamed(context, '/worldtimepage',
+    //     arguments: ScArguments(
+    //         location: instance.location,
+    //         time: instance.time,
+    //         flag: instance.flag
+    //     )
+    // );
 
     // print (instance.time);
     // setState(() {
