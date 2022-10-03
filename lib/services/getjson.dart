@@ -47,7 +47,7 @@ class GetJson{
 class WorldTime {
 
   String location; // location for UI
-  String time = ''; // time for that location
+  String time = '?'; // time for that location
   String flag;
   String url;
 
@@ -61,6 +61,15 @@ class WorldTime {
     initializeDateFormatting();
     dateFormat = new DateFormat.yMMMMd('cs');
     timeFormat = new DateFormat.Hms('cs');
+    // pocet=0;
+    // do {
+    //   if (pocet>2 == 0) {
+    //     print(number);
+    //   }
+    //   number++;
+    // } while (number < 10);
+
+
     try {
       // var url = Uri.http('worldtimeapi.org', 'api/timezone/' + this.url);
       var urli = Uri.http('worldtimeapi.org', 'api/timezone/' + url);
@@ -89,17 +98,17 @@ class WorldTime {
     print('caught error: $e');
     time='Zle spojenie!!!';
     }
-  }
+  // }
 
 }
-class ScArguments {
-  String location; // location for UI
-  String time; // time for that location
-  String flag;
-
-
-  ScArguments({required this.location, required this.time, required this.flag});
-
-
-  // ScreenArguments(this.title, this.message);
+// class ScArguments {
+//   String location; // location for UI
+//   String time; // time for that location
+//   String flag;
+//
+//
+//   ScArguments({required this.location, required this.time, required this.flag});
+//
+//
+//   // ScreenArguments(this.title, this.message);
 }
