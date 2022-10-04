@@ -17,8 +17,9 @@ class _WorldTimePageState extends State<WorldTimePage> {
 
   @override
   Widget build(BuildContext context) {
-
     args2=ModalRoute.of(context)!.settings.arguments as Map; //toto prijima arguments
+    String bgImage=args2['isDateTime'] ? 'images/day.png' : 'images/night.png';
+
     // Map scmap=args as Map;
     // print('String time: '+args.time.toString());
     // print('Args: '+args.toString());
@@ -39,6 +40,12 @@ class _WorldTimePageState extends State<WorldTimePage> {
       ),
       body: SafeArea(
         child: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/$bgImage'),
+              fit: BoxFit.cover,
+            ),
+          ),
           padding: const EdgeInsets.all(10),
           child: Column(
 
