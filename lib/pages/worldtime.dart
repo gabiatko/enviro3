@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+// import 'package:intl/intl.dart';
 import 'package:enviro/widgets/MyAppBar.dart';
 import 'package:enviro/widgets/MyBottomBar.dart';
 // import 'package:enviro/services/getjson.dart';
@@ -12,13 +12,13 @@ class WorldTimePage extends StatefulWidget {
 }
 
 class _WorldTimePageState extends State<WorldTimePage> {
-  // Map data={};
+  Map args2={};
   String cas='';
 
   @override
   Widget build(BuildContext context) {
 
-    Map args2=ModalRoute.of(context)!.settings.arguments as Map; //toto prijima arguments
+    args2=ModalRoute.of(context)!.settings.arguments as Map; //toto prijima arguments
     // Map scmap=args as Map;
     // print('String time: '+args.time.toString());
     // print('Args: '+args.toString());
@@ -85,22 +85,22 @@ class _WorldTimePageState extends State<WorldTimePage> {
                 ),
               ),
               SizedBox(height: 50.0),
-              TextButton.icon(     // <-- TextButton
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.download,
-                  size: 24.0,
-                ),
-                label: const Text('Download'),
-              ),
-              OutlinedButton.icon( // <-- OutlinedButton
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.download,
-                  size: 24.0,
-                ),
-                label: Text('Download'),
-              ),
+              // TextButton.icon(     // <-- TextButton
+              //   onPressed: () {},
+              //   icon: const Icon(
+              //     Icons.download,
+              //     size: 24.0,
+              //   ),
+              //   label: const Text('Download'),
+              // ),
+              // // OutlinedButton.icon( // <-- OutlinedButton
+              //   onPressed: () {},
+              //   icon: const Icon(
+              //     Icons.download,
+              //     size: 24.0,
+              //   ),
+              //   label: Text('Download'),
+              // ),
             ],
           ),
         ),

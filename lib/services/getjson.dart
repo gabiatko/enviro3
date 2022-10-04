@@ -1,8 +1,9 @@
 import 'package:http/http.dart';
 import 'dart:convert';
+import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:intl/intl.dart';
-import 'package:intl/date_symbol_data_local.dart';
+// import 'package:intl/date_symbol_data_local.dart';
 
 
 class GetJson{
@@ -20,7 +21,7 @@ class GetJson{
     Response response=await get(url);
     // response.body=
     String telo='['+response.body+']';
-    print(response.body);
+    // print(response.body);
     // if (kDebugMode) {
     //   print(telo);
     // }
@@ -50,57 +51,54 @@ class WorldTime {
   String time = '?'; // time for that location
   String flag;
   String url;
+  bool isDateTime=true;
 
 
   WorldTime({required this.location, required this.flag, required this.url});
 
   Future<void> getTime() async {
-    DateFormat dateFormat;
-    DateFormat timeFormat;
+    // DateFormat dateFormat;
+    // DateFormat timeFormat;
     // initializeDateFormatting().then((_) => runMyCode());
-    initializeDateFormatting();
-    dateFormat = new DateFormat.yMMMMd('cs');
-    timeFormat = new DateFormat.Hms('cs');
-    // pocet=0;
-    // do {
-    //   if (pocet>2 == 0) {
-    //     print(number);
-    //   }
-    //   number++;
-    // } while (number < 10);
+    // initializeDateFormatting();
+    // dateFormat = new DateFormat.yMMMMd('cs');
+    // timeFormat = new DateFormat.Hms('cs');
+    int pocet=0;
+    bool nepreslo;
+
+    do {
+      try {
+
+        var urli = Uri.http('worldtimeapi.org', 'api/timezone/' + url);
+        var response = await get(urli);
+
+        Map jsonResponse = jsonDecode(response.body);
+
+        // print('response.statusCode is: '+ response.statusCode.toString());
+
+        String datetime = jsonResponse['datetime'].toString();
+        String offset = jsonResponse['utc_offset'].toString().substring(1, 3);
 
 
-    try {
-      // var url = Uri.http('worldtimeapi.org', 'api/timezone/' + this.url);
-      var urli = Uri.http('worldtimeapi.org', 'api/timezone/' + url);
-      var response = await get(urli);
-      // if (response.statusCode == 200) {
-      Map jsonResponse = jsonDecode(response.body);
-
-      // print('Time is: '+ jsonResponse['datetime'].toString());
-
-      String datetime = jsonResponse['datetime'].toString();
-      String offset = jsonResponse['utc_offset'].toString().substring(1, 3);
-      // print('dateTime is: ' + datetime);
-      // print('offset is: ' + offset);
-
-      // create date object
-      DateTime teraz = DateTime.parse(datetime);
-      teraz = teraz.add(Duration(hours: int.parse(offset)));
-      // print(teraz);
-      time = DateFormat.jm().format(teraz).toString();
-
-      // } else {
-      //   print('Request failed with status: ${response.statusCode}.');
-      // }
-    }
-    catch(e){
-    print('caught error: $e');
-    time='Zle spojenie!!!';
-    }
-  // }
-
+        // create date object
+        DateTime teraz = DateTime.parse(datetime);
+        isDateTime= teraz.hour>6 && teraz.hour<20 ? true : false;
+        teraz = teraz.add(Duration(hours: int.parse(offset)));
+        // print(teraz);
+        time = DateFormat.jm().format(teraz).toString();
+        nepreslo=false;
+      }
+      catch (e) {
+        time = 'Zle spojenie!!!';
+        nepreslo=true;
+        pocet =pocet+1;
+        // print('caught error: $e   '+pocet.toString()+ '    '+nepreslo.toString());
+      }
+    } while ((pocet < 10) && nepreslo);
+  }
 }
+
+
 // class ScArguments {
 //   String location; // location for UI
 //   String time; // time for that location
@@ -111,4 +109,4 @@ class WorldTime {
 //
 //
 //   // ScreenArguments(this.title, this.message);
-}
+// }

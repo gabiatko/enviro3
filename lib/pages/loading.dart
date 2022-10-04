@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-
+import 'dart:async';
 import 'package:enviro/services/getjson.dart';
 
 class Loading extends StatefulWidget {
@@ -127,7 +127,8 @@ class _LoadingState extends State<Loading> {
         arguments: {
         'location': instance.location,
         'time': instance.time,
-        'flag': instance.flag
+        'flag': instance.flag,
+        'isDateTime':instance.isDateTime
         }
     );
 
