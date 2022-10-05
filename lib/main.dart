@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'pages/home.dart';
 import 'pages/worldtime.dart';
 import 'pages/loading.dart';
+import 'pages/loading_aktuality.dart';
 import 'pages/novinky.dart';
 import 'pages/vyzvy.dart';
 import 'pages/choose_location.dart';
@@ -23,7 +24,7 @@ void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     initialRoute:
-    '/loading',
+    '/loadingAktuality',
     // home: Home(),
     routes: {
       '/':(context) => Loading(),
@@ -32,6 +33,7 @@ void main() {
       '/novinky': (context) => Novinky(),
       '/vyzvy': (context) => Vyzvy(),
       '/loading': (context) => Loading(),
+      '/loadingAktuality': (context) => LoadingAktuality(),
       '/location': (context) => ChooseLocation(),
     },
   ))
