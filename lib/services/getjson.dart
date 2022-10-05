@@ -33,9 +33,9 @@ class GetJson{
       jsonResponse = jsonDecode(telo);
 
       // if (kDebugMode) {
-      //   print ('OK');
+        print ('OK');
       // }
-      print ('response ' + jsonResponse[2]['guid'].toString());
+      // print ('response ' + jsonResponse[2]['guid'].toString());
 
     } else {
       print ('NIE OK');
@@ -101,14 +101,3 @@ class WorldTime {
 }
 
 
-// class ScArguments {
-//   String location; // location for UI
-//   String time; // time for that location
-//   String flag;
-//
-//
-//   ScArguments({required this.location, required this.time, required this.flag});
-//
-//
-//   // ScreenArguments(this.title, this.message);
-// }

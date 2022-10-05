@@ -21,6 +21,8 @@ class _LoadingState extends State<LoadingAktuality> {
   void setupNovinky() async{
     GetJson instance=GetJson();
     await instance.getNovinky();
+  print(instance.getNovinky());
+
 
     await Future.delayed(
               const Duration(milliseconds: 300),()
@@ -102,7 +104,7 @@ class _LoadingState extends State<LoadingAktuality> {
               Container(
                 height: 80.0,
               ),
-              Text('LOADING PAGE'),
+              Text('LOADING PAGE AKTUALITY'),
               Text(cas,
                     style: const TextStyle(
                       fontSize: 20.0,
