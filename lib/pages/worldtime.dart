@@ -18,8 +18,10 @@ class _WorldTimePageState extends State<WorldTimePage> {
   @override
   Widget build(BuildContext context) {
     args2=ModalRoute.of(context)!.settings.arguments as Map; //toto prijima arguments
-    String bgImage=args2['isDateTime'] ? 'images/day.png' : 'images/night.png';
+    String bgImage=args2['isDateTime'] ? 'images/day2.png' : 'images/night2.png';
+    Color bgColor= args2['isDateTime'] ? Colors.blueAccent : Colors.indigo;
 
+        // '' : Colors.indigo[700];
     // Map scmap=args as Map;
     // print('String time: '+args.time.toString());
     // print('Args: '+args.toString());
@@ -32,6 +34,7 @@ class _WorldTimePageState extends State<WorldTimePage> {
     // cas=args2.time.toString();
 
     return Scaffold(
+      backgroundColor: bgColor,
       appBar: const MyappBar(
         height: 50.0,
         title: 'Environmentálny fond',
@@ -40,10 +43,15 @@ class _WorldTimePageState extends State<WorldTimePage> {
       ),
       body: SafeArea(
         child: Container(
+
           decoration: BoxDecoration(
+            color: Colors.white,
             image: DecorationImage(
               image: AssetImage('assets/$bgImage'),
               fit: BoxFit.cover,
+              colorFilter:
+              ColorFilter.mode(Colors.black.withOpacity(0.4),
+                  BlendMode.dstATop),
             ),
           ),
           padding: const EdgeInsets.all(10),

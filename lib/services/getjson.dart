@@ -82,9 +82,16 @@ class WorldTime {
 
         // create date object
         DateTime teraz = DateTime.parse(datetime);
-        isDateTime= teraz.hour>6 && teraz.hour<20 ? true : false;
+        // isDateTime= ((teraz.hour>6) & (teraz.hour<9)) ? true : false;
+        // if(teraz.hour>6 && teraz.hour<11){
         teraz = teraz.add(Duration(hours: int.parse(offset)));
-        // print(teraz);
+        // if(teraz.hour<10){
+        //
+        //   isDateTime=false;
+        //   print ('fasd sdfv adf vadf va d         '+teraz.hour.toString());
+        // }
+        isDateTime= (teraz.hour>6 && teraz.hour<10) ? true : false;
+        print('teraz.hour '+ teraz.hour.toString()+'     is Date: '+isDateTime.toString());
         time = DateFormat.jm().format(teraz).toString();
         nepreslo=false;
       }

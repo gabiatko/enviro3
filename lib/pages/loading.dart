@@ -204,8 +204,6 @@ class _LoadingState extends State<Loading> {
                 // },
                   color: Colors.white,
                   size: 100.0
-
-
              ),
             ],
           ),
