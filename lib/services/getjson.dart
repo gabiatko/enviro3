@@ -13,14 +13,13 @@ class GetJson{
   // late List jsonResponse=[];
   // Map
   // GetJson({})
+  List jsonResponse=[];
 
-  Future<List> getNovinky() async{
-    List jsonResponse=[];
+  Future<void> getNovinky() async{
+
     var url = Uri.https('envirof.envirofond.sk','news');
-    // // Uri.https('envirof.envirofond.sk', '/news', {'q': '{http}'});
     Response response=await get(url);
-    // response.body=
-    String telo='['+response.body+']';
+    String telo=response.body;
     // print(response.body);
     // if (kDebugMode) {
     //   print(telo);
@@ -41,7 +40,7 @@ class GetJson{
       print ('NIE OK');
     //   print('Request failed with status: ${response.statusCode}.');
     }
-    return jsonResponse;
+    // return jsonResponse;
   }
 }
 

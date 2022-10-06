@@ -25,14 +25,15 @@ void main() {
     debugShowCheckedModeBanner: false,
     initialRoute:
     '/loadingAktuality',
+    // '/novinky',
     // home: Home(),
     routes: {
-      '/':(context) => Loading(),
+      // '/':(context) => Loading(),
       '/home': (context) => Home(),
       '/worldtimepage': (context) => WorldTimePage(),
       '/novinky': (context) => Novinky(),
       '/vyzvy': (context) => Vyzvy(),
-      '/loading': (context) => Loading(),
+      // '/loading': (context) => Loading(),
       '/loadingAktuality': (context) => LoadingAktuality(),
       '/location': (context) => ChooseLocation(),
     },

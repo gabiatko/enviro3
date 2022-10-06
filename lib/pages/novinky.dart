@@ -37,52 +37,14 @@ class _NovinkyState extends State<Novinky> {
     'tri'
   ];
 
-  void getNovinky() async{
-    var url = Uri.https('envirof.envirofond.sk','news');
-    // // Uri.https('envirof.envirofond.sk', '/news', {'q': '{http}'});
-    Response response=await get(url);
-    // response.body=
-    String telo='['+response.body+']';
-    print(response.body);
-    data=jsonDecode(telo);
-    print('data : '+data[0]['guid']);
-  }
-
-
-
-  // void setupJson() async{
-  //   GetJson getJson=GetJson();
-  //   getJson.getNovinky();
-  //   ddd=getJson.json1;
-  //   jsona= getJson.getNovinky() as List;
-  //
-  //   print('get json'+ ddd);
-  //   // print('get jsona'+ jsona);
-  //
-  //
-  // }  // void setupJson() async{
-  //   GetJson getJson=GetJson();
-  //   getJson.getNovinky();
-  //   ddd=getJson.json1;
-  //   jsona= getJson.getNovinky() as List;
-  //
-  //   print('get json'+ ddd);
-  //   // print('get jsona'+ jsona);
-  //
-  //
-  // }
-
-
-  @override
-  void initState() {
-    // setupJson();
-    getNovinky();
-    print('Halllooo');
-    super.initState();
-  }
+  List args=[];
 
   @override
   Widget build(BuildContext context) {
+    args=ModalRoute.of(context)!.settings.arguments as List;
+
+    print('build news:  '+args[0]['post_date'].toString());
+    print('build znacky:  '+znacky.toString());
     return Scaffold(
       appBar: const MyappBar(
         height: 50.0,
@@ -92,12 +54,34 @@ class _NovinkyState extends State<Novinky> {
       ),
       body:SafeArea(
 
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: znacky.map((e) {
-                        return Text('${e.postDate}');
-                      }).toList(),
+        child: Container(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                // Column(
+                //   children:
+                //   znacky.map((e) {
+                //     return Text('${e.postDate}');
+                //   }).toList(),
+                // ),
+
+                Container(
+                  width: 500.0,
+
+                  child:
+                    ListView.builder(
+                      itemCount: args.length,
+                        itemBuilder: (BuildContext context, int position){
+                          return ListTile(
+                            title:Text("${args[position]['post_date']}"),
+                          );
+                        }
+                    ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

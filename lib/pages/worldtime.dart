@@ -27,9 +27,9 @@ class _WorldTimePageState extends State<WorldTimePage> {
     // print('Args: '+args.toString());
     // print('SCMap: '+scmap.toString());
     // Map args2=ModalRoute.of(context)!.settings.arguments as Map; //toto prijima arguments
-    print('33333');
-    print(args2);
-    print('4444');
+    // print('33333');
+    // print(args2);
+    // print('4444');
     // cas=args.time.toString();
     // cas=args2.time.toString();
 

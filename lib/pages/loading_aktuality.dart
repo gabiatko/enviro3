@@ -1,74 +1,38 @@
+import 'package:enviro/services/getjson.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'dart:async';
-import 'package:enviro/services/getjson.dart';
 
 class LoadingAktuality extends StatefulWidget {
   const LoadingAktuality({Key? key}) : super(key: key);
 
   @override
-  State<LoadingAktuality> createState() => _LoadingState();
+  State<LoadingAktuality> createState() => _LoadingAktualityState();
 }
 
-class _LoadingState extends State<LoadingAktuality> {
+class _LoadingAktualityState extends State<LoadingAktuality> {
 
-
-    String cas="Loading...";
-    String text1="";
-    String text2="";
-
-
-  void setupNovinky() async{
-    GetJson instance=GetJson();
+  void setupGetNovinky() async {
+    GetJson instance = GetJson();
     await instance.getNovinky();
-  print(instance.getNovinky());
-
-
-    await Future.delayed(
-              const Duration(milliseconds: 300),()
-              {
-            setState(() {
-              text1=    "Environmentálny";
-                          });
-              }
-            );
-
-    await Future.delayed(
-              const Duration(milliseconds: 300),()
-          {
-            setState(() {
-
-              text2="fond 2";
-                          });
-          });
-    await Future.delayed(
-              const Duration(milliseconds: 500),()
-          {
-          });
-
-    print (instance.getNovinky());
-
-    Navigator.pushReplacementNamed(context, '/novinky');
-    // ,
-    //     arguments: {
-    //     'location': instance.location,
-    //     'time': instance.time,
-    //     'flag': instance.flag,
-    //     'isDateTime':instance.isDateTime
-    //     }
-    // );
-
+    print(instance.jsonResponse);
+    Navigator.pushReplacementNamed(context, '/novinky',
+    arguments: instance.jsonResponse
+    );
   }
+
+
+
+
+@override
+  void initState() {
+    // TODO: implement initState
+    setupGetNovinky();
+    super.initState();
+  }
+
+
 
   @override
-  void initState() {
-    super.initState();
-
-    setupNovinky();
-
-
-  }
-
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
@@ -87,44 +51,26 @@ class _LoadingState extends State<LoadingAktuality> {
               Container(
                 height: 30.0,
               ),
-              Text(text1,
-                style: TextStyle(
-                  color: Colors.white70,
-                  fontWeight: FontWeight.w900,
-                  fontSize: 30.0,
-                ),
-              ),
-              Text(text2,
-                style: TextStyle(
-                  color: Colors.white70,
-                  fontWeight: FontWeight.w900,
-                  fontSize: 30.0,
-                ),
-              ),
+
               Container(
                 height: 80.0,
               ),
-              Text('LOADING PAGE AKTUALITY'),
-              Text(cas,
-                    style: const TextStyle(
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.w900,
-                    ),
-              ),
+              Text('LOADING PAGE'),
+
               Container(
                 height: 80.0,
               ),
               SpinKitPouringHourGlassRefined(
                 // itemBuilder: (BuildContext context, int index) {
-                    // return DecoratedBox(
-                        // decoration: BoxDecoration(
-                          // color: index.isEven ? Colors.red : Colors.green,
-                        // ),
-                    // );
+                // return DecoratedBox(
+                // decoration: BoxDecoration(
+                // color: index.isEven ? Colors.red : Colors.green,
+                // ),
+                // );
                 // },
                   color: Colors.white,
                   size: 100.0
-             ),
+              ),
             ],
           ),
         ),
@@ -132,5 +78,3 @@ class _LoadingState extends State<LoadingAktuality> {
     );
   }
 }
-
-

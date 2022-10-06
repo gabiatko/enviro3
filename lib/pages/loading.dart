@@ -141,7 +141,7 @@ class _LoadingState extends State<Loading> {
   @override
   void initState() {
     super.initState();
-    print('initstate running');
+    print('initstate running loading.dart');
     // getTime();
     // getData();
     setupWorldTime();
@@ -150,6 +150,7 @@ class _LoadingState extends State<Loading> {
   }
 
   Widget build(BuildContext context) {
+    // setupWorldTime();
     return Scaffold(
       body: SafeArea(
         child: Container(
