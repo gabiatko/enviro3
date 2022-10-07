@@ -43,8 +43,8 @@ class _NovinkyState extends State<Novinky> {
   Widget build(BuildContext context) {
     args=ModalRoute.of(context)!.settings.arguments as List;
 
-    print('build news:  '+args[0]['post_date'].toString());
-    print('build znacky:  '+znacky.toString());
+    // print('build news:  '+args[0]['post_date'].toString());
+    // print('build znacky:  '+znacky.toString());
     return Scaffold(
       appBar: const MyappBar(
         height: 50.0,
@@ -57,30 +57,36 @@ class _NovinkyState extends State<Novinky> {
         child: Container(
           child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                // Column(
-                //   children:
-                //   znacky.map((e) {
-                //     return Text('${e.postDate}');
-                //   }).toList(),
-                // ),
 
-                Container(
-                  width: 500.0,
+            child:ListView.builder(
+              itemCount: args.length,
+              itemBuilder: (BuildContext context, int index){
+                return Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 4.0),
+                  child: Card(
+                    // margin: EdgeInsets.fromLTRB(0, 35, 0, 0),
+                    elevation:5.0,
 
-                  child:
-                    ListView.builder(
-                      itemCount: args.length,
-                        itemBuilder: (BuildContext context, int position){
-                          return ListTile(
-                            title:Text("${args[position]['post_date']}"),
-                          );
-                        }
+                    child: ListTile(
+                      onTap: () {},
+                      title:Text("${args[index]['post_title']}",
+                        style: TextStyle(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 12.0,
+                        ),
+                        textAlign: TextAlign.justify,
+                      ),
+                      // SizedBox(height: 8),
+                      subtitle:Text("${args[index]['post_date']}",
+                        style: TextStyle(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 8.0,
+                        ),
+                      ),
                     ),
-                ),
-              ],
+                  ),
+                );
+              },
             ),
           ),
         ),

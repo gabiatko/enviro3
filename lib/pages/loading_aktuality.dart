@@ -14,7 +14,7 @@ class _LoadingAktualityState extends State<LoadingAktuality> {
   void setupGetNovinky() async {
     GetJson instance = GetJson();
     await instance.getNovinky();
-    print(instance.jsonResponse);
+    // print(instance.jsonResponse);
     Navigator.pushReplacementNamed(context, '/novinky',
     arguments: instance.jsonResponse
     );
@@ -25,7 +25,7 @@ class _LoadingAktualityState extends State<LoadingAktuality> {
 
 @override
   void initState() {
-    // TODO: implement initState
+
     setupGetNovinky();
     super.initState();
   }

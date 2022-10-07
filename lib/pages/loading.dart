@@ -145,7 +145,7 @@ class _LoadingState extends State<Loading> {
     // getTime();
     // getData();
     setupWorldTime();
-    // todo
+
 
   }
 

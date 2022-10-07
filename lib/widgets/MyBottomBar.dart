@@ -53,11 +53,6 @@ class _MybottomBarState extends State<MybottomBar> {
     });
   }
 
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
