@@ -1,8 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:enviro/services/znacky.dart';
 
-import 'package:http/http.dart';
+// import 'package:http/http.dart';
 import 'dart:convert';
 
 
@@ -46,6 +47,7 @@ class _NovinkyState extends State<Novinky> {
     // print('build news:  '+args[0]['post_date'].toString());
     // print('build znacky:  '+znacky.toString());
     return Scaffold(
+
       appBar: const MyappBar(
         height: 50.0,
         title: 'Environmentálny fond',
@@ -57,32 +59,57 @@ class _NovinkyState extends State<Novinky> {
         child: Container(
           child: Padding(
             padding: const EdgeInsets.all(8.0),
-
             child:ListView.builder(
               itemCount: args.length,
               itemBuilder: (BuildContext context, int index){
+
                 return Padding(
                   padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 4.0),
                   child: Card(
-                    // margin: EdgeInsets.fromLTRB(0, 35, 0, 0),
                     elevation:5.0,
-
-                    child: ListTile(
-                      onTap: () {},
-                      title:Text("${args[index]['post_title']}",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w900,
-                          fontSize: 12.0,
+                    child: ExpansionTile(
+                      // onTap: () {},
+                      title:Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 10.0,horizontal: 5.0 ),
+                        child: Text("${args[index]['post_title']}",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w900,
+                            fontSize: 12.0,
+                          ),
+                          textAlign: TextAlign.justify,
                         ),
-                        textAlign: TextAlign.justify,
                       ),
                       // SizedBox(height: 8),
-                      subtitle:Text("${args[index]['post_date']}",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w900,
-                          fontSize: 8.0,
+                      subtitle:Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 0,horizontal: 5.0),
+                        child:
+                        Text("${args[index]['post_date']}",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w900,
+                            fontSize: 8.0,
+                          ),
                         ),
                       ),
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.all(5.0),
+                            child:Html(
+                                data:args[index]['post_content'],
+                                onLinkTap: (url, _, __, ___) {
+                                    print("Opening $url...");
+                                },
+                                onImageTap: (src, _, __, ___) {
+                                  print(src);
+                                },
+                            ),
+                            // child: Text("${args[index]['post_content']}",
+                            //   style: TextStyle(
+                            //     fontWeight: FontWeight.w700,
+                            //     fontSize: 10.0,
+                            //   ),
+                            // ),
+                        ),
+                      ],
                     ),
                   ),
                 );
@@ -120,5 +147,42 @@ class _NovinkyState extends State<Novinky> {
     });
     print('index: '+ value.toString());
 
+  }
+
+  Widget _pakedCard(){
+    return ListView.builder(
+      itemCount: args.length,
+      itemBuilder: (BuildContext context, int index){
+        return Padding(
+          padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal: 4.0),
+          child: Card(
+            elevation:5.0,
+            child: ListTile(
+              onTap: () {},
+              title:Padding(
+                padding: const EdgeInsets.symmetric(vertical: 10.0,horizontal: 5.0 ),
+                child: Text("${args[index]['post_title']}",
+                  style: TextStyle(
+                    fontWeight: FontWeight.w900,
+                    fontSize: 12.0,
+                  ),
+                  textAlign: TextAlign.justify,
+                ),
+              ),
+              // SizedBox(height: 8),
+              subtitle:Padding(
+                padding: const EdgeInsets.symmetric(vertical: 0,horizontal: 5.0),
+                child: Text("${args[index]['post_date']}",
+                  style: TextStyle(
+                    fontWeight: FontWeight.w900,
+                    fontSize: 8.0,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        );
+      },
+    );
   }
 }

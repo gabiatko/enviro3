@@ -21,8 +21,6 @@ class _LoadingAktualityState extends State<LoadingAktuality> {
   }
 
 
-
-
 @override
   void initState() {
 

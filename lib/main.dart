@@ -23,6 +23,7 @@ void main() {
 
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
+    theme: ThemeData.dark(),
     initialRoute:
     '/loadingAktuality',
     // '/novinky',
@@ -33,7 +34,7 @@ void main() {
       '/worldtimepage': (context) => WorldTimePage(),
       '/novinky': (context) => Novinky(),
       '/vyzvy': (context) => Vyzvy(),
-      // '/loading': (context) => Loading(),
+      '/loading': (context) => Loading(),
       '/loadingAktuality': (context) => LoadingAktuality(),
       '/location': (context) => ChooseLocation(),
     },
